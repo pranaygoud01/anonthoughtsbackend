@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import Users from "./models/userthoughts.model.mjs";
 const app = express();
 const PORT = process.env.PORT || 8000;
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts";
 app.use(cors());
 app.use(express.json());
 
@@ -40,14 +43,11 @@ app.delete("/api/delete/:id", async (req, res) => {
   }
 });
 mongoose
-  .connect(
-    "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts",
-    {
-      ssl: true,
-    }
-  )
+  .connect(MONGODB_URI, {
+    ssl: true,
+  })
   .then(
-    app.listen(`${PORT}`, () => {
+    app.listen(PORT, () => {
       console.log(`${PORT}`);
     })
   );
