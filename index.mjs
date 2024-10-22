@@ -41,7 +41,12 @@ app.delete("/api/delete/:id", async (req, res) => {
 });
 mongoose
   .connect(
-    "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts"
+    "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      ssl: true,
+    }
   )
   .then(
     app.listen(`${PORT}`, () => {
