@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import Users from "./models/userthoughts.model.mjs";
 const app = express();
+const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
@@ -43,7 +44,7 @@ mongoose
     "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts"
   )
   .then(
-    app.listen("8000", () => {
-      console.log("Connected");
+    app.listen(`${PORT}`, () => {
+      console.log(`${PORT}`);
     })
   );
