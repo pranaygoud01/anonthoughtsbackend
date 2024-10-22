@@ -43,8 +43,6 @@ mongoose
   .connect(
     "mongodb+srv://root:1234@thoughts.osuu3.mongodb.net/?retryWrites=true&w=majority&appName=thoughts",
     {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       ssl: true,
     }
   )
